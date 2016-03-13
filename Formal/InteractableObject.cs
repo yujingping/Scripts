@@ -29,6 +29,6 @@ public class InteractableObject : PhotoObject
 	public override void PhotoTaken()
 	{
 		DialogueLua.SetVariable (objectName, true);
-		Debug.Log ("Sucessfully Interacted!");
+		//Debug.Log ("Sucessfully Interacted!");
 	}
 }
