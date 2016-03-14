@@ -8,8 +8,8 @@ public class ReminderObject : PickUpObject
 
 	public override void PhotoTaken()
 	{
-		DialogueLua.SetVariable (Consts.VariableName.luaContentState + index, true);
 		PlayerPrefs.SetInt (Consts.VariableName.luaContentState + index, 1);
+		DialogueLua.SetVariable (Consts.VariableName.luaContentState + index, true);
 		gameController.AddItem (objectName,introduction);
 		if(isExist || isReusable)
 			Instantiate (pickUpEffect, transform.position, Quaternion.identity);

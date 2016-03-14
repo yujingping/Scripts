@@ -25,7 +25,7 @@ public class PickUpObject : PhotoObject
 
 	public override void PhotoTaken()
 	{
-		PlayerPrefs.GetInt (Consts.VariableName.pickUpName + objectName, 1);
+		PlayerPrefs.SetInt (Consts.VariableName.pickUpName + objectName, 1);
 		gameController.AddItem (objectName,introduction);
 		if(isExist || isReusable)
 		Instantiate (pickUpEffect, transform.position, Quaternion.identity);

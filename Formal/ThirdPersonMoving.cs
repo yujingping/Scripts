@@ -10,7 +10,7 @@ public class ThirdPersonMoving : MonoBehaviour
 	private Transform m_playerTrans;
 	private Transform m_transform;
 
-	[SerializeField] private float rotateSmoothValue = 10f;
+	[SerializeField] private float rotateSmoothValue = 0.8f;
 	[SerializeField] private float pivotOffsetY = 1.75f;
 	[SerializeField] private float cameraMoveSpeed = 3f;
 	[SerializeField] private float offsetCollisionUnit = 0.5f;

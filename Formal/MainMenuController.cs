@@ -10,7 +10,7 @@ public class MainMenuController : MonoBehaviour
 
 	private bool isMenuOpen = false;
 	private Rect windowRect = new Rect(0,0,500,500);
-	private ScaledRect scaledRect = ScaledRect.FromOrigin (ScaledRectAlignment.MiddleCenter,ScaledValue.FromPixelValue(300), ScaledValue.FromPixelValue(320));
+	private ScaledRect scaledRect = ScaledRect.FromOrigin (ScaledRectAlignment.MiddleCenter,ScaledValue.FromPixelValue(375), ScaledValue.FromPixelValue(400));
 	private UIController uiController;
 
 	private bool currentQuestState = false;
@@ -22,7 +22,7 @@ public class MainMenuController : MonoBehaviour
 
 	void Start()
 	{
-		StartCoroutine (QuestLogDetection());
+		
 	}
 
 	void Update()
@@ -78,13 +78,14 @@ public class MainMenuController : MonoBehaviour
 	{
 		isMenuOpen = status;
 		if (status)
+		{
 			windowRect = scaledRect.GetPixelRect ();
+			//Time.timeScale = status ? 0 : 1;
+		}
 		else
 		{
-			uiController.SetNGUIState (true);
-			uiController.SetUGUIState (true);
+			
 		}
-		//Time.timeScale = status ? 0 : 1;
 	}
 
 	private bool IsQuestLogOpen()
@@ -97,6 +98,8 @@ public class MainMenuController : MonoBehaviour
 		if ((questLogWindow != null) && !IsQuestLogOpen ())
 		{
 			questLogWindow.Open ();
+			uiController.SetSituation (Consts.UISettings.MainMenu);
+			StartCoroutine (QuestLogDetection());
 		}
 	}
 
@@ -105,11 +108,14 @@ public class MainMenuController : MonoBehaviour
 		while(true)
 		{
 			bool realState = IsQuestLogOpen ();
-			if (realState != currentQuestState)
+			if (realState == false)
 			{
-				currentQuestState = realState;
-				uiController.SetNGUIState (!currentQuestState);
-				uiController.SetUGUIState (!currentQuestState);
+				GameObject player = GameObject.FindGameObjectWithTag (Tags.Player);
+				if (player.GetComponent<FirstPersonMoving> ().enabled)
+					uiController.SetSituation (Consts.UISettings.FirstPerson);
+				else if (player.GetComponent<ThirdPersonMoving> ().enabled)
+					uiController.SetSituation (Consts.UISettings.ThirdPerson);
+				break;
 			}
 			yield return null;
 		}

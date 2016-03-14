@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
 
 	IEnumerator SelectObjects()
 	{
+		yield return new WaitForSeconds (0.3f);
 		while(true)
 		{
 			npcs = new List<GameObject> (GameObject.FindGameObjectsWithTag(Tags.NPC));
@@ -93,10 +94,14 @@ public class GameController : MonoBehaviour
 		float tarStrength = state ? outlineStrength : 0f;
 		foreach (GameObject go in pickUpObjects)
 		{
+			if (go == null)
+				continue;
 			go.GetComponent<Renderer> ().material.SetFloat ("_Outline",tarStrength);
 		}
 		foreach (GameObject go in interactObjects)
 		{
+			if (go == null)
+				continue;
 			go.GetComponent<Renderer> ().material.SetFloat ("_Outline", tarStrength);
 		}
 	}
@@ -112,8 +117,6 @@ public class GameController : MonoBehaviour
 	public void OddMethod(int q,GameObject go)
 	{
 		x++;
-		//Debug.Log(x + q);
-		//Debug.Log (go.name);
 	}
 
 	private void InactiveObjectsCulling(List<GameObject> toCull)

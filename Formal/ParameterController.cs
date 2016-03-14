@@ -22,8 +22,10 @@ public class ParameterController : MonoBehaviour
 		yy = Input.compass.magneticHeading - defaultCompassDirection;
 		xx = -Input.acceleration.z * 90f;
 		zz = -Input.acceleration.x * 90f;
-		if (zz < 0f)
-			zz = 0f;
+		if (xx > 90f)
+			xx = 90f;
+		else if (xx < -90f)
+			xx = -90f;
 		return Quaternion.Euler (xx,yy,zz);
 	}
 
