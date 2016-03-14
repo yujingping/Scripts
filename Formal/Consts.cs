@@ -15,6 +15,9 @@ public class Consts
 		public const string state = "State";
 		public const string name = "Name";
 		public const string luaContentState = "ContentAvailability";
+		public const string interactableName = "Interactable";
+		public const string pickUpName = "PickUp";
+		public const string realPicture = "RealPicture";
 	}
 
 	public enum UISettings

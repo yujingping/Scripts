@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using PixelCrushers.DialogueSystem;
 
 public class InteractableObject : PhotoObject 
 {
@@ -14,7 +13,7 @@ public class InteractableObject : PhotoObject
 		isNotified = false;
 		gameController = GameObject.FindGameObjectWithTag (Tags.GameController).GetComponent<GameController> ();
 		uiController = GameObject.FindGameObjectWithTag (Tags.UIController).GetComponent<UIController> ();
-		if (DialogueLua.GetVariable (objectName).AsBool)
+		if (PlayerPrefs.GetInt (Consts.VariableName.interactableName + objectName) == 1)
 			PhotoTaken ();
 	}
 
@@ -28,7 +27,7 @@ public class InteractableObject : PhotoObject
 
 	public override void PhotoTaken()
 	{
-		DialogueLua.SetVariable (objectName, true);
+		PlayerPrefs.SetInt (Consts.VariableName.interactableName + objectName, 1);
 		//Debug.Log ("Sucessfully Interacted!");
 	}
 }

@@ -22,6 +22,8 @@ public class RealPicture : MonoBehaviour
 
 	void Awake()
 	{
+		if (PlayerPrefs.GetInt (Consts.VariableName.realPicture + pictureName) == 1)
+			Destroy (gameObject);
 		m_transform = transform;
 		if (checkNormalPlane)
 			DetermineNormalParams ();
@@ -39,6 +41,7 @@ public class RealPicture : MonoBehaviour
 
 	public IEnumerator TakePhoto()
 	{
+		PlayerPrefs.SetInt (Consts.VariableName.realPicture + pictureName, 1);
 		DialogueManager.ShowAlert ("Photo : \"" + pictureName + "\" Has been Taken!");
 		DialogueLua.SetQuestField (invokeQuestName, Consts.VariableName.state, Consts.QuestCondition.Active);
 		DialogueLua.SetQuestField (currentQueestName, Consts.VariableName.state, Consts.QuestCondition.Success);

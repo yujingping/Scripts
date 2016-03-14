@@ -13,6 +13,8 @@ public class PickUpObject : PhotoObject
 
 	void Awake()
 	{
+		if (PlayerPrefs.GetInt (Consts.VariableName.pickUpName + objectName) == 1)
+			Destroy (gameObject);
 		isExist = true;
 		isNotified = false;
 		dissolveExtent = 0f;
@@ -23,6 +25,7 @@ public class PickUpObject : PhotoObject
 
 	public override void PhotoTaken()
 	{
+		PlayerPrefs.GetInt (Consts.VariableName.pickUpName + objectName, 1);
 		gameController.AddItem (objectName,introduction);
 		if(isExist || isReusable)
 		Instantiate (pickUpEffect, transform.position, Quaternion.identity);
