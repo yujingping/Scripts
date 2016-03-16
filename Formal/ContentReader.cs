@@ -47,6 +47,7 @@ public class ContentReader : MonoBehaviour
 			if (!result)
 				indices.Add (i);
 		}
+		ReadContent ();
 	}
 		
 	public void SetReadState(int index)

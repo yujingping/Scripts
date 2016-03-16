@@ -27,6 +27,8 @@ public class Consts
 		BackPack,
 		Photoing,
 		MainMenu,
-		Reminder
+		Reminder,
+		Tutoring,
+		OnStart
 	}
 }

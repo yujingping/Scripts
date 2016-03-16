@@ -37,6 +37,7 @@ public class UIController : MonoBehaviour
 			mainMenuButton.SetActive (true);
 			backPackButton.SetActive (true);
 			reminder.SetActive (false);
+			SetUGUIState (true);
 			break;
 		case Consts.UISettings.FirstPerson:
 			photoButton.SetActive (true);
@@ -45,6 +46,7 @@ public class UIController : MonoBehaviour
 			mainMenuButton.SetActive (true);
 			backPackButton.SetActive (true);
 			reminder.SetActive (false);
+			SetUGUIState (true);
 			break;
 		case Consts.UISettings.BackPack:
 			photoButton.SetActive (false);
@@ -53,6 +55,7 @@ public class UIController : MonoBehaviour
 			backPackButton.SetActive (true);
 			reminder.SetActive (false);
 			mainMenuButton.SetActive (false);
+			SetUGUIState (false);
 			break;
 		case Consts.UISettings.Photoing:
 			photoButton.SetActive (false);
@@ -61,6 +64,7 @@ public class UIController : MonoBehaviour
 			mainMenuButton.SetActive (false);
 			backPackButton.SetActive (false);
 			reminder.SetActive (false);
+			SetUGUIState (false);
 			break;
 		case Consts.UISettings.MainMenu:
 			photoButton.SetActive (false);
@@ -69,6 +73,7 @@ public class UIController : MonoBehaviour
 			mainMenuButton.SetActive (false);
 			backPackButton.SetActive (false);
 			reminder.SetActive (false);
+			SetUGUIState (false);
 			break;
 		case Consts.UISettings.Reminder:
 			photoButton.SetActive (false);
@@ -77,6 +82,26 @@ public class UIController : MonoBehaviour
 			mainMenuButton.SetActive (false);
 			backPackButton.SetActive (false);
 			reminder.SetActive (true);
+			SetUGUIState (false);
+			break;
+		case Consts.UISettings.Tutoring:
+			photoButton.SetActive (false);
+			changeButton.SetActive (false);
+			joyStick.SetActive (false);
+			mainMenuButton.SetActive (false);
+			backPackButton.SetActive (false);
+			reminder.SetActive (false);
+			SetUGUIState (false);
+			Debug.Log ("Tutoring!");
+			break;
+		case Consts.UISettings.OnStart:
+			photoButton.SetActive (false);
+			changeButton.SetActive (false);
+			joyStick.SetActive (true);
+			mainMenuButton.SetActive (true);
+			backPackButton.SetActive (false);
+			reminder.SetActive (false);
+			SetUGUIState (true);
 			break;
 		default :
 			break;
